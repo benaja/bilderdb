@@ -59,6 +59,9 @@ class View
     public $css = array();
     private $properties = array();
 
+    public $header = true;
+    public $footer = true;
+
     public function __construct($viewfile)
     {
         $this->viewfile = "./../view/$viewfile.php";
@@ -87,8 +90,12 @@ class View
         extract($this->properties);
         $css = $this->css;
 
-        require './../view/header.php';
+        if($this->header){
+            require './../view/header.php';
+        }
         require $this->viewfile;
-        require './../view/footer.php';
+        if($this->footer){
+            require './../view/footer.php';
+        }
     }
 }
