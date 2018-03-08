@@ -1,1 +1,2 @@
-Hallo Welt!
+<div class='home-container'>
+</div>

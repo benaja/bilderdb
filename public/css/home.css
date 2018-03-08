@@ -1,1 +1,6 @@
-.welcome-container {}
+.home-container {
+    background-image: url("/images/home_img.jpg");
+    height: 840px;
+    width: 100%;
+    background-size: cover;
+}

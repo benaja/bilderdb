@@ -39,6 +39,7 @@ class HomeController
         $view = new View('home');
         $view->title = 'Startseite';
         $view->heading = 'Startseite';
+        $view->footer = false;
         $view->css('/css/home.css');
         $view->display();
     }
