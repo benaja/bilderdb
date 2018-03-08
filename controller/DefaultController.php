@@ -39,6 +39,7 @@ class DefaultController
         $view = new View('default_index');
         $view->title = 'Startseite';
         $view->heading = 'Startseite';
+        $view->header = false;
         $view->css('/css/home.css');
         $view->css('/css/test.css');
         $view->display();

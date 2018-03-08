@@ -90,9 +90,8 @@ class View
         extract($this->properties);
         $css = $this->css;
 
-        if($this->header){
-            require './../view/header.php';
-        }
+        require './../view/header.php';
+
         require $this->viewfile;
         if($this->footer){
             require './../view/footer.php';
