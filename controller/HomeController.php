@@ -22,7 +22,7 @@
  *     - Daten welche z.B. von einem Formular kommen validieren und dem Model
  *         übergeben, damit sie in der Datenbank persistiert werden können.
  */
-class DefaultController
+class HomeController
 {
     /**
      * Die index Funktion des DefaultControllers sollte in jedem Projekt
@@ -36,11 +36,10 @@ class DefaultController
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
-        $view = new View('default_index');
+        $view = new View('home');
         $view->title = 'Startseite';
         $view->heading = 'Startseite';
         $view->css('/css/home.css');
-        $view->css('/css/test.css');
         $view->display();
     }
 }
