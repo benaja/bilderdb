@@ -15,6 +15,14 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <meta charset="UTF-8">
   <title>Bilder DB</title>
+
+  <?php
+      foreach($css as $currentCSS):
+  ?>
+        <link rel="stylesheet" href="<?= $currentCSS ?>">
+  <?php
+    endforeach;
+  ?>
 </head>
 
 <body>
