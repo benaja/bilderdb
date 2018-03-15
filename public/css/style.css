@@ -2,3 +2,21 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.nav-wrapper{
+  background-color: #181B2B;
+}
+
+.brand-logo{
+  margin-left: 1rem;
+}
+
+.nav{
+  width: 400px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+nav ul a{
+  padding: 0 30px;
+}

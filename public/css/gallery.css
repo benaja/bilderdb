@@ -1,0 +1,33 @@
+
+.gallery_container{
+    width: 90%;
+    margin: 0 auto
+}
+
+.gallery{
+    width: 300px;
+    height: 250px;
+    float: left;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.gallery_image{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 200px;
+    background-image: url("/images/eifelturm.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+
+.gallery h3{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+
+create table picture (id int PRIMARY KEY AUTO_INCREMENT, name text, desciption text, url text, gallery_id int, user_id int, created datetime, FOREIGN KEY (gallery_id) REFERENCES gallery(id), FOREIGN KEY (user_id) REFERENCES user(id));
