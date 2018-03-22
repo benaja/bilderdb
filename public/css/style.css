@@ -20,3 +20,26 @@
 nav ul a{
   padding: 0 30px;
 }
+
+.profile_image{
+  float: right;
+  height: 80%;
+  margin: 7px;
+  cursor: pointer;
+}
+
+.logout_container{
+  position: absolute;
+  width: 140px;
+  height: 50px;
+  top: 63px;
+  right: 0;
+  background-color: #181B2B;
+  cursor: pointer;
+}
+
+.logout_container p{
+  text-align: center;
+  margin: 0;
+  line-height: 50px;
+}
