@@ -22,6 +22,6 @@ return array(
         'host'     => 'localhost',
         'username' => 'root',
         'password' => 'gibbiX12345',
-        'database' => 'schulprojekt',
+        'database' => 'picturecloud',
     ),
 );

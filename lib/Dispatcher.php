@@ -28,9 +28,12 @@ class Dispatcher
      */
     public static function dispatch()
     {
+
+        session_start();
         // Die URI wird aus dem $_SERVER Array ausgelesen und in ihre
         //   Einzelteile zerlegt.
         // /user/index/foo --> ['user', 'index', 'foo']
+        if (isset($_SESSION['userId'])&& $_SESSION['userId'] != 0) {
         $uri = $_SERVER['REQUEST_URI'];
         $uri = strtok($uri, '?'); // Erstes ? und alles danach abschneiden
         $uri = trim($uri, '/'); // Alle / am anfang und am Ende der URI abschneiden
@@ -44,6 +47,9 @@ class Dispatcher
             $controllerName .= 'Controller'; // "Controller" anhängen
         }
 
+        
+            // logged in
+       
         // Den Namen der auszuführenden Methode ermitteln
         $method = 'index';
         if (!empty($uriFragments[1])) {
@@ -60,5 +66,13 @@ class Dispatcher
         //   Methode darauf aufgerufen.
         $controller = new $controllerName();
         $controller->$method();
+        } else {
+           require_once "../controller/HomeController.php";
+
+           // Eine neue Instanz des Controllers wird erstellt und die gewünschte
+           //   Methode darauf aufgerufen.
+           $controller = new HomeController();
+           $controller->index(); // not logged in
+        }
     }
 }

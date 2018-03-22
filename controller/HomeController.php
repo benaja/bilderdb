@@ -1,5 +1,5 @@
 <?php
-
+require_once('../repository/UserRepository.php');
 /**
  * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
  * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik
@@ -33,6 +33,27 @@ class HomeController
      */
     public function index()
     {
+
+        //var_dump($_POST);
+        if(isset($_POST['firstname']))
+        {
+            $repository = new UserRepository();
+            $user = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
+
+        }
+        else if(isset($_POST['password'])){
+            $repository = new UserRepository();
+            $user = $repository->login($_POST['email']);
+            
+            $pwd = sha1($_POST['password']);
+
+            if($user->password == $pwd){
+                $_SESSION['userId'] = $user->id;
+                header('Location: /Gallery');
+            }else{
+                echo "pwd incorrect";
+            }
+        }
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
@@ -42,5 +63,7 @@ class HomeController
         $view->header = false;
         $view->css('/css/home.css');
         $view->display();
+
+        
     }
 }
