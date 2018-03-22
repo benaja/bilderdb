@@ -15,5 +15,4 @@ class GalleryController
         $view->css("/css/gallery.css");
         $view->display();
     }
-
 }
