@@ -24,6 +24,13 @@
     <?php
     endforeach;
   ?>
+  <?php
+      foreach($js as $currentJS):
+  ?>
+    <link rel="stylesheet" href="<?= $currentJS ?>">
+    <?php
+    endforeach;
+  ?>
 </head>
 
 <body>
