@@ -38,19 +38,35 @@ class HomeController
         if(isset($_POST['firstname']))
         {
             $repository = new UserRepository();
-            $userId = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
-            $_SESSION['userId'] = $userId;
-            header('Location: /Gallery');
+            if(!$repository->exist($_POST['email'])){
+                $userId = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
+                $_SESSION['userId'] = $userId;
+                header('Location: /Gallery');
+            }else{
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            swal('Error', 'User allready exists!', 'error');
+                            showRegistration();
+                        });
+                    </script>";
+            }
         }
         else if(isset($_POST['password'])){
             $repository = new UserRepository();
-            $user = $repository->login($_POST['email']);
+            if($repository->exist($_POST['email'])){
+                $user = $repository->login($_POST['email']);
             
-            $pwd = sha1($_POST['password']);
-
-            if($user->password == $pwd){
-                $_SESSION['userId'] = $user->id;
-                header('Location: /Gallery');
+                $pwd = sha1($_POST['password']);
+                if($user->password == $pwd ){
+                    $_SESSION['userId'] = $user->id;
+                    header('Location: /Gallery');
+                }else{
+                    echo "<script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                swal('Error', 'Wrong Password or E-Mail', 'error');
+                            });
+                        </script>";
+                }
             }else{
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -58,6 +74,7 @@ class HomeController
                         });
                     </script>";
             }
+            
         }
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
