@@ -27,7 +27,7 @@
   <?php
       foreach($js as $currentJS):
   ?>
-    <link rel="stylesheet" href="<?= $currentJS ?>">
+    <script src="<?= $currentJS ?>"></script>
     <?php
     endforeach;
   ?>
