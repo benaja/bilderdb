@@ -38,8 +38,9 @@ class HomeController
         if(isset($_POST['firstname']))
         {
             $repository = new UserRepository();
-            $user = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
-
+            $userId = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
+            $_SESSION['userId'] = $userId;
+            header('Location: /Gallery');
         }
         else if(isset($_POST['password'])){
             $repository = new UserRepository();
