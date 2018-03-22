@@ -23,8 +23,8 @@
                 <input type="submit" value="Login" class="login-button">
                 <img class="arrow-right" src="/images/arrow-right.png">
             </div>
-        </form> 
-         <div class="signup-button-container">
+        </form>
+        <div onclick="showRegistration" class="signup-button-container">
             <button class="login-button">Sign up</button>
             <img class="arrow-right" src="/images/arrow-right.png">
         </div>
