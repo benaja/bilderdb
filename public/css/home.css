@@ -29,7 +29,9 @@ body {}
     bottom: 30px;
 }
 
-#login {}
+#registration {
+    display: none
+}
 
 .login-container {
     position: relative;

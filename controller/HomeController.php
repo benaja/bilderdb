@@ -62,6 +62,7 @@ class HomeController
         $view->heading = 'Startseite';
         $view->header = false;
         $view->css('/css/home.css');
+        $view->js('/js/home.js')
         $view->display();
 
         

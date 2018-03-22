@@ -13,7 +13,7 @@
             </div>
         </form>
 
-        <!-- <form class="login-form" method="post" action="#" id="registration">
+        <form class="login-form" method="post" action="#" id="registration">
             <input type="email" name="email" placeholder="E-Mail">
             <input type="text" placeholder="Firstname" name="firstname">
             <input type="text" placeholder="Lastname" name="lastname">
@@ -23,11 +23,11 @@
                 <input type="submit" value="Login" class="login-button">
                 <img class="arrow-right" src="/images/arrow-right.png">
             </div>
-        </form> -->
-        <!-- <div class="signup-button-container">
+        </form> 
+         <div class="signup-button-container">
             <button class="login-button">Sign up</button>
             <img class="arrow-right" src="/images/arrow-right.png">
-        </div> -->
+        </div>
     </div>
 </div>
 
