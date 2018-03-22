@@ -65,7 +65,10 @@ class HomeController
         $view->css('/css/home.css');
         $view->js('/js/home.js');
         $view->display();
+    }
 
-        
+    public function logout(){
+        session_destroy();
+        header("Location: /");
     }
 }

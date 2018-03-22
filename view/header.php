@@ -24,11 +24,11 @@
     <?php
     endforeach;
   ?>
-  <?php
+      <?php
       foreach($js as $currentJS):
   ?>
-    <script src="<?= $currentJS ?>"></script>
-    <?php
+        <script src="<?= $currentJS ?>"></script>
+        <?php
     endforeach;
   ?>
 </head>
@@ -40,6 +40,10 @@
     <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">PictureCloud</a>
+        <img src="/images/user.png" class="profile_image">
+        <a href="/home/logout" class="logout_container">
+            <p>Logout</p>
+        </a>
         <div class="nav">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
