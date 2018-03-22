@@ -57,6 +57,7 @@ class View
 {
     private $viewfile;
     public $css = array();
+    public $js = array();
     private $properties = array();
 
     public $header = true;
@@ -85,10 +86,15 @@ class View
         array_push($this->css, $url);
     }
 
+    public function js($url){
+        array_push($this->js, $url);
+    }
+
     public function display()
     {
         extract($this->properties);
         $css = $this->css;
+        $js = $this->js;
 
         require './../view/header.php';
 
