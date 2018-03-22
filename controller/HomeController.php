@@ -52,7 +52,11 @@ class HomeController
                 $_SESSION['userId'] = $user->id;
                 header('Location: /Gallery');
             }else{
-                echo "pwd incorrect";
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            swal('Error', 'Wrong Password or E-Mail', 'error');
+                        });
+                    </script>";
             }
         }
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
