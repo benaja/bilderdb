@@ -6,7 +6,7 @@
 
         <form class="login-form" method="post" id="login">
             <input type="email" name="email" placeholder="E-Mail">
-            <input placeholder="Password" name="password" class="valdiate" type="password">
+            <input placeholder="Password" name="password" class="valdiate last-input" type="password">
             <div class="login-button-container">
                 <input type="submit" value="Login" class="login-button">
                 <img class="arrow-right" src="/images/arrow-right.png">
@@ -18,13 +18,13 @@
             <input type="text" placeholder="Firstname" name="firstname">
             <input type="text" placeholder="Lastname" name="lastname">
             <input placeholder="Password" name="password" class="valdiate" type="password">
-            <input placeholder="Password Repeat" name="password2" class="valdiate" type="password">
+            <input placeholder="Password Repeat" name="password2" class="valdiate last-input" type="password">
             <div class="login-button-container">
                 <input type="submit" value="Login" class="login-button">
                 <img class="arrow-right" src="/images/arrow-right.png">
             </div>
         </form>
-        <div onclick="showRegistration" class="signup-button-container">
+        <div onclick="showRegistration()" class="signup-button-container">
             <button class="login-button">Sign up</button>
             <img class="arrow-right" src="/images/arrow-right.png">
         </div>

@@ -37,7 +37,7 @@ body {}
     position: relative;
     padding: 15px;
     width: 400px;
-    height: 300px;
+    height: auto;
     background-color: #222D42;
     margin: 18vh auto 0 auto;
     box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.9);
@@ -53,6 +53,10 @@ body {}
     background-color: transparent;
     color: white;
     border: none;
+}
+
+.last-input {
+    margin-bottom: 70px !important;
 }
 
 .signup-button-container {
