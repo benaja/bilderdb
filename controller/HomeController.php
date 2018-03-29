@@ -45,7 +45,7 @@ class HomeController
             }else{
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            swal('Error', 'User allready exists!', 'error');
+                            swal('Error', 'E-mail allready exists!', 'error');
                             showRegistration();
                         });
                     </script>";
