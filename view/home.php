@@ -13,12 +13,12 @@
             </div>
         </form>
 
-        <form class="login-form" method="post" action="#" id="registration">
+        <form class="login-form" method="post" action="#" id="registration" onsubmit="return testPW()">
             <input type="email" name="email" placeholder="E-Mail" required>
             <input type="text" placeholder="Firstname" name="firstname" required>
             <input type="text" placeholder="Lastname" name="lastname" required>
-            <input placeholder="Password" name="password" class="valdiate" type="password" required>
-            <input placeholder="Password Repeat" name="password2" class="valdiate last-input" type="password" required>
+            <input id="pw1" placeholder="Password" name="password" class="valdiate" type="password" required>
+            <input id="pw2" placeholder="Password Repeat" name="password2" class="valdiate last-input" type="password" required>
             <div class="login-button-container">
                 <input type="submit" value="Registration" class="login-button login-button-active">
                 <img class="arrow-right" src="/images/arrow-right.png">
