@@ -9,7 +9,7 @@ class GalleryController
 {
     public function index()
     {
-        $ = new ();
+        $userRepository = new UserRepository();
 
         $view = new View('gallery');
         $view->css("/css/gallery.css");
