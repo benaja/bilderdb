@@ -36,6 +36,7 @@ class UserController
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password);
+
         }
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)

@@ -49,7 +49,7 @@ class ImageController
         
 
         if(isset($_POST['imgName'])){
-            $target_dir = "Uploads/";
+            $target_dir = "Uploads/". $_SESSION['userId'] . "/". $_POST['galleryId']. "/";
             $target_file = $target_dir . basename($_FILES["imgUpload"]['name']);
             $repository = new ImageRepository();
             // Check if image can be moved to dir
