@@ -1,6 +1,6 @@
 <?php
 
-require_once '../repository/UserRepository.php';
+require_once '../repository/.php';
 
 /**
  * Siehe Dokumentation im DefaultController.
@@ -9,7 +9,7 @@ class GalleryController
 {
     public function index()
     {
-        $userRepository = new UserRepository();
+        $ = new ();
 
         $view = new View('gallery');
         $view->css("/css/gallery.css");

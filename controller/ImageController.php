@@ -1,5 +1,6 @@
 <?php
-require_once('../repository/UserRepository.php');
+require_once('../repository/ImageRepository.php');
+require_once('../repository/GalleryRepository.php');
 /**
  * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
  * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik
@@ -33,19 +34,40 @@ class ImageController
      */
     public function index()
     {
+        
 
         $view = new View('addImage');
         $view->title = 'Add Image';
         $view->heading = 'Add Image';
         $view->header = true;
         $view->css('/css/addimage.css');
-        $view->js('/js/addimage.js');
+        $view->js('/css/addimage.js');
         $view->display();
-    }
+        }
 
     public function upload(){
         
-        $view = new View('addImage');
+
+        if(isset($_POST['imgName'])){
+            $target_dir = "Uploads/";
+            $target_file = $target_dir . basename($_FILES["imgUpload"]['name']);
+            $repository = new ImageRepository();
+            // Check if image can be moved to dir
+                if (move_uploaded_file($_FILES["imgUpload"]['tmp_name'], $target_file)) {
+                    echo "The file ". basename( $_FILES["imgUpload"]['name']). " has been uploaded.";
+                    
+                    $date = date('m/d/Y', time());
+                    $dateFixed = date('Y-m-d', strtotime($date));
+                    $name = $_POST['imgName'];
+                    $desc = $_POST['description'];
+                    $galleryId = $_POST['galleryId'];
+                    $uid = $_SESSION['userId'];
+                    $repository->upload($dateFixed, $name, $desc, $galleryId, $target_file, $uid);
+            }
+        }
+    
+
+        $view = new View('AddImage');
         $view->title = 'Add Image';
         $view->heading = 'Add Image';
         $view->header = true;

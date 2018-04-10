@@ -146,7 +146,7 @@ class Repository
         // Datensätze aus dem Resultat holen und in das Array $rows speichern
         $rows = array();
         while ($row = $result->fetch_object()) {
-            $rows[] = $row;
+            $rows[] =$row;
         }
 
         return $rows;
