@@ -13,7 +13,7 @@
                 <label for="email">E-Mail</label>
             </div>
             <div class="input-field col s12">
-                <input id="password" name="password" type="text" class="white-text validate" required>
+                <input id="password" name="password" type="password" class="white-text validate" required>
                 <label for="password">Password</label>
             </div>
             <div class="col s12">
@@ -37,12 +37,12 @@
                 <label for="lastname">Lastname</label>
             </div>
             <div class="input-field col s12">
-                <input id="email" name="email" type="email" class="white-text validate" required>
-                <label for="email">E-Mail</label>
+                <input id="email1" name="email" type="email" class="white-text validate" required>
+                <label for="email1">E-Mail</label>
             </div>
             <div class="input-field col s12">
-                <input id="password" name="password" type="text" class="white-text validate" required>
-                <label for="password">Password</label>
+                <input id="password1" name="password" type="text" class="white-text validate" required>
+                <label for="password1">Password</label>
             </div>
             <div class="input-field col s12">
                 <input id="password2" name="password2" type="text" class="white-text validate" required>
