@@ -3,31 +3,58 @@
         <h2>PictureCloud</h2>
     </div>
     <div class="login-container">
-        <h3 class="login-title">Login</h3>
-        <form class="login-form" method="post" id="login">
-            <input type="email" name="email" placeholder="E-Mail" required>
-            <input placeholder="Password" name="password" class="valdiate last-input" type="password" required>
-            <div class="login-button-container">
-                <input type="submit" value="Login" class="login-button login-button-active">
-                <img class="arrow-right" src="/images/arrow-right.png">
+
+        <form class="login-form row" method="post" id="login">
+            <div class="col s12">
+                <h3 class="login-title">Login</h3>
+            </div>
+            <div class="input-field col s12">
+                <input id="email" name="email" type="email" class="white-text validate" required>
+                <label for="email">E-Mail</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password" name="password" type="text" class="white-text validate" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="col s12">
+                <button class="btn waves-effect waves-light right" type="submit" name="action">Login
+                    <i class="material-icons right">send</i>
+                </button>
+                <a class="waves-effect waves-light btn" onclick="showRegistration()">Sign up</a>
             </div>
         </form>
 
-        <form class="login-form" method="post" action="#" id="registration" onsubmit="return testPW()">
-            <input type="email" name="email" placeholder="E-Mail" required>
-            <input type="text" placeholder="Firstname" name="firstname" required>
-            <input type="text" placeholder="Lastname" name="lastname" required>
-            <input id="pw1" placeholder="Password" name="password" class="valdiate" type="password" required>
-            <input id="pw2" placeholder="Password Repeat" name="password2" class="valdiate last-input" type="password" required>
-            <div class="login-button-container">
-                <input type="submit" value="Registration" class="login-button login-button-active">
-                <img class="arrow-right" src="/images/arrow-right.png">
+        <form class="login-form row" method="post" action="#" id="registration" onsubmit="return testPW()">
+            <div class="col s12">
+                <h3 class="login-title">Sign up</h3>
+            </div>
+            <div class="input-field col s12">
+                <input id="firstname" name="firstname" type="text" class="white-text validate" required>
+                <label for="firstname">Firstname</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="lastname" name="lastname" type="text" class="white-text validate" required>
+                <label for="lastname">Lastname</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="email" name="email" type="email" class="white-text validate" required>
+                <label for="email">E-Mail</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password" name="password" type="text" class="white-text validate" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password2" name="password2" type="text" class="white-text validate" required>
+                <label for="password2">Password</label>
+            </div>
+            <div class="col s12 ">
+                <button class="btn waves-effect waves-light right" type="submit" name="action">Sign up
+                    <i class="material-icons right">send</i>
+                </button>
+                <a class="waves-effect waves-light btn" onclick="showRegistration()">Login</a>
             </div>
         </form>
-        <div onclick="showRegistration()" class="signup-button-container">
-            <button id="registration-button" class="login-button">Sign up</button>
-            <img class="arrow-right" src="/images/arrow-right.png">
-        </div>
     </div>
 </div>
 
