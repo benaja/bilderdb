@@ -49,12 +49,13 @@ class ImageController
         
 
         if(isset($_POST['imgName'])){
-            $target_dir = "Uploads/". $_SESSION['userId'] . "/". $_POST['galleryId']. "/";
-            $target_file = $target_dir . basename($_FILES["imgUpload"]['name']);
+            $target_dir = "Uploads";
+            $filename = $_FILES["imgUpload"]["tmp_name"];
+            $uniquesavename = time().uniqid(rand());
+            $target_file = $target_dir . "/" . basename($_FILES["imgUpload"]['name'] . $uniquesavename);
             $repository = new ImageRepository();
             // Check if image can be moved to dir
-                if (move_uploaded_file($_FILES["imgUpload"]['tmp_name'], $target_file)) {
-                    echo "The file ". basename( $_FILES["imgUpload"]['name']). " has been uploaded.";
+                if (move_uploaded_file($filename,  $target_file)) {
                     
                     $date = date('m/d/Y', time());
                     $dateFixed = date('Y-m-d', strtotime($date));
