@@ -41,7 +41,6 @@ class HomeController
             if(!$repository->exist($_POST['email'])){
                 $userId = $repository->create($_POST['firstname'], $_POST['lastname'],$_POST['email'], $_POST['password']);
                 $_SESSION['userId'] = $userId;
-                    mkdir("Uploads/". $userId, 0777, true);
                 header('Location: /Gallery');
             }else{
                 echo "<script>
