@@ -103,4 +103,28 @@ class UserRepository extends Repository
             return false;
         }
     }
+
+    public function getAuthUser(){
+        $query = "SELECT * from user where id = ?";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i', $_SESSION['userId']);
+
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Ersten Datensatz aus dem Reultat holen
+        $row = $result->fetch_object();
+
+        // Datenbankressourcen wieder freigeben
+        $result->close();
+
+        // Den gefundenen Datensatz zurückgeben
+        return $row;
+    }
 }

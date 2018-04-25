@@ -12,6 +12,36 @@ SET time_zone
 
 -- --------------------------------------------------------
 
+CREATE TABLE `gallery`
+(
+  `id` int
+(11) NOT NULL,
+  `name` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+ADD PRIMARY KEY
+(`id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int
+(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 --
 -- Tabellenstruktur für Tabelle `picture`
 --
@@ -28,7 +58,7 @@ CREATE TABLE `picture`
   `user_id` int
 (11) DEFAULT NULL,
   `created` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indizes der exportierten Tabellen
@@ -71,35 +101,7 @@ ADD CONSTRAINT `picture_ibfk_2` FOREIGN KEY
 (`id`);
 COMMIT;
 
-CREATE TABLE `gallery`
-(
-  `id` int
-(11) NOT NULL,
-  `name` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indizes der exportierten Tabellen
---
-
---
--- Indizes für die Tabelle `gallery`
---
-ALTER TABLE `gallery`
-ADD PRIMARY KEY
-(`id`);
-
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int
-(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 
 
