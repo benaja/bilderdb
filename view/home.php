@@ -46,7 +46,7 @@
             </div>
             <div class="input-field col s12">
                 <input id="password2" name="password2" type="text" class="white-text validate" required>
-                <label for="password2">Password</label>
+                <label for="password2">Repeat Password</label>
             </div>
             <div class="col s12 ">
                 <button class="btn waves-effect waves-light right" type="submit" name="action">Sign up
