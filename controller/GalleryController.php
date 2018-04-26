@@ -16,7 +16,6 @@ class GalleryController
 
         $view = new View('gallery');
         $view->css("/css/gallery.css");
-        $view->authUser = $authUser;
         $view->display();
     }
 

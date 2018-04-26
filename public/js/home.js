@@ -18,8 +18,8 @@ function showRegistration() {
 }
 
 function testPW(){
-    var pw1 = $("#pw1").val();
-    var pw2 = $("#pw2").val();
+    var pw1 = $("#password1").val();
+    var pw2 = $("#password2").val();
 
     if(pw1 != pw2){
         swal('Fehler', 'Die Passwörter stimmen nicht übereing!', 'error');
