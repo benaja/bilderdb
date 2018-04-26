@@ -49,10 +49,14 @@ class ImageController
         
 
         if(isset($_POST['imgName'])){
-            $target_dir = "Uploads";
+            $target_dir = "Uploads/";
             $filename = $_FILES["imgUpload"]["tmp_name"];
+            $filenameClear = $_FILES["imgUpload"]['name'];
+            $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filenameClear);
+            $ext = pathinfo($filenameClear, PATHINFO_EXTENSION);
             $uniquesavename = time().uniqid(rand());
-            $target_file = $target_dir . "/" . basename($_FILES["imgUpload"]['name'] . $uniquesavename);
+            $target_file = $target_dir . $withoutExt . $uniquesavename . "." .$ext;
+            var_dump($target_file);
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
