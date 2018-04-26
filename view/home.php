@@ -45,13 +45,10 @@
                 <label for="password1">Password</label>
             </div>
             <div class="input-field col s12">
-<<<<<<< HEAD
                 <input id="password2" name="password2" type="password" class="white-text validate" required>
                 <label for="password2">Password</label>
-=======
                 <input id="password2" name="password2" type="text" class="white-text validate" required>
                 <label for="password2">Repeat Password</label>
->>>>>>> b2bc11c2644a460e9ee3c82f0ebb602dee6b6f88
             </div>
             <div class="col s12 ">
                 <button class="btn waves-effect waves-light right" type="submit" name="action">Sign up
