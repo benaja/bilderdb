@@ -1,18 +1,17 @@
 .gallery_container {
     width: 90%;
-    margin-top: 20px !important;
+    /* margin-top: 20px !important;
     margin: 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; */
 }
 
 .gallery {
-    width: 30%;
     box-shadow: 0 0 10px gray;
 }
 
-a {
-    display: block;
+.gallery_link {
+    cursor: pointer;
 }
 
 .gallery_image {

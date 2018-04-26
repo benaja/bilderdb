@@ -14,8 +14,14 @@ class GalleryController
 
         $authUser = $userRepository->getAuthuser();
 
+        
+        $repository = new GalleryRepository();
+
+        $gallerys = $repository->getAllGallery();
+
         $view = new View('gallery');
         $view->css("/css/gallery.css");
+        $view->gallerys = $gallerys;
         $view->display();
     }
 
@@ -25,6 +31,18 @@ class GalleryController
         $view = new View('addGallery');
         $view->css("/css/gallery.css");
         $view->display();
+    }
+
+
+    public function galleryShow(){
+
+
+        $view = new View('galleryShow');
+        $view->css("/css/galleryShow.css");
+        $view->display();
+        $galleryId = $_GET['id'];
+        $galleryImages = getAllPicturesByGallerId($galleryId);
+        $view->galleryImages = $galleryImages;
     }
 
 }
