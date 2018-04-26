@@ -41,10 +41,12 @@
                 <label for="email1">E-Mail</label>
             </div>
             <div class="input-field col s12">
-                <input id="password1" name="password" type="text" class="white-text validate" required>
+                <input id="password1" name="password" type="password" class="white-text validate" required>
                 <label for="password1">Password</label>
             </div>
             <div class="input-field col s12">
+                <input id="password2" name="password2" type="password" class="white-text validate" required>
+                <label for="password2">Password</label>
                 <input id="password2" name="password2" type="text" class="white-text validate" required>
                 <label for="password2">Repeat Password</label>
             </div>

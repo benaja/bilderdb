@@ -1,5 +1,5 @@
 <?php
-
+require_once '../repository/UserRepository.php';
 /**
  * Die View is das V aus MVC. Dabei geht es um alles, was dem Client (Browser)
  * als Antwort auf einen Request zurückgegeben wird. Im Normalfall ist das der
@@ -66,6 +66,11 @@ class View
     public function __construct($viewfile)
     {
         $this->viewfile = "./../view/$viewfile.php";
+
+        $userRepository = new UserRepository();
+
+        $authUser = $userRepository->getAuthuser();
+        $this->authUser = $authUser;
     }
 
     public function __set($key, $value)
