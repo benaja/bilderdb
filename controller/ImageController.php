@@ -56,7 +56,6 @@ class ImageController
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
-                    
                     $date = date('m/d/Y', time());
                     $dateFixed = date('Y-m-d', strtotime($date));
                     $name = $_POST['imgName'];
@@ -64,7 +63,7 @@ class ImageController
                     $galleryId = $_POST['galleryId'];
                     $uid = $_SESSION['userId'];
                     $repository->upload($dateFixed, $name, $desc, $galleryId, $target_file, $uid);
-            }
+                }
         }
     
 

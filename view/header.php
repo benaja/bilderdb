@@ -41,7 +41,7 @@
 ?>
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">PictureCloud</a>
+                <a href="/gallery" class="brand-logo">PictureCloud</a>
                 <a class='dropdown-trigger right profil-button' href='#' data-target='profil-dropdown'>
                     <i class="material-icons right whtie-text">account_circle</i><?= $authUser->firstname ?></a>
                 <ul id='profil-dropdown' class='dropdown-content'>
