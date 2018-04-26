@@ -56,7 +56,6 @@ class ImageController
             $ext = pathinfo($filenameClear, PATHINFO_EXTENSION);
             $uniquesavename = time().uniqid(rand());
             $target_file = $target_dir . $withoutExt . $uniquesavename . "." .$ext;
-            var_dump($target_file);
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
