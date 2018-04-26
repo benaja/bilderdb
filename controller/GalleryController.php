@@ -20,7 +20,16 @@ class GalleryController
     }
 
     public function addGallery(){
+        if(isset($_POST['name'])){
+            $galleryRepository = new GalleryRepository();
 
+            if($galleryRepository->exist($_POST['name'], 'name')){
+
+            }else{
+                $id = $galleryRepository->create($_POST['name'], $_POST['description']);
+                header("Location: /gallery/show?id=$id");
+            }
+        }
 
         $view = new View('addGallery');
         $view->css("/css/gallery.css");

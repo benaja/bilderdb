@@ -12,7 +12,7 @@
 }
 
 .nav{
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
   height: 100%;
 }
@@ -27,23 +27,34 @@ nav ul a{
 }
 
 .logout_container{
-  position: absolute;
-  width: 140px;
-  height: 50px;
-  top: 63px;
-  right: 0;
-  background-color: #181B2B;
-  cursor: pointer;
+    position: absolute;
+    width: 140px;
+    height: 50px;
+    top: 63px;
+    right: 0;
+    background-color: #181B2B;
+    cursor: pointer;
 }
 
 .logout_container p{
-  text-align: center;
-  margin: 0;
-  line-height: 50px;
+    text-align: center;
+    margin: 0;
+    line-height: 50px;
 }
 
 #profil-dropdown li a{
   line-height: 64px;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.form{
+    box-shadow: 0 0 5px lightgray;
+    background-color: white;
+}
+
+.new-gallery-form{
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
 }

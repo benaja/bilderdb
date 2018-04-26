@@ -28,5 +28,49 @@ class GalleryRepository extends Repository
         }                                          
         return (json_decode(json_encode($rows), true));                
     }
+
+    public function create($name, $descripiton){
+        $query = "INSERT INTO $this->tableName (name, description) VALUES (?, ?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ss', $name, $descripiton);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->insert_id;
+    }
+
+    public function exist($id, $attribut){
+        $query = "SELECT count(*) as anzahl FROM {$this->tableName} WHERE $attribut =?";
+
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $id);
+
+        // Das Statement absetzen
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Ersten Datensatz aus dem Reultat holen
+        $row = $result->fetch_object();
+
+        // Datenbankressourcen wieder freigeben
+        $result->close();
+
+        // Den gefundenen Datensatz zurückgeben
+        if($row->anzahl > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>
