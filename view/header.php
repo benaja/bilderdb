@@ -49,7 +49,7 @@
                         <a><?= "$authUser->firstname $authUser->lastname" ?></a>
                     </li>
                     <li>
-                        <a href="/home/logout">Logout</a>
+                        <a href="/login/logout">Logout</a>
                     </li>
                 </ul>
                 <!-- <img src="/images/user.png" class="profile_image">

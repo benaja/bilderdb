@@ -25,7 +25,7 @@ class GalleryController
         $view->display();
     }
 
-    public function addGallery(){
+    public function add(){
         if(isset($_POST['name'])){
             $galleryRepository = new GalleryRepository();
 

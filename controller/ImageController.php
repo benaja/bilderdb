@@ -69,6 +69,9 @@ class ImageController
                 }
         }
     
+        $repository = new GalleryRepository();
+
+        $gallerys = $repository->getAllGallery();
 
         $view = new View('AddImage');
         $view->title = 'Add Image';
@@ -76,6 +79,7 @@ class ImageController
         $view->header = true;
         $view->css('/css/addimage.css');
         $view->js('/js/addimage.js');
+        $view->gallerys = $gallerys;
         $view->display();
 
     }

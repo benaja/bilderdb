@@ -22,7 +22,7 @@ require_once('../repository/UserRepository.php');
  *     - Daten welche z.B. von einem Formular kommen validieren und dem Model
  *         übergeben, damit sie in der Datenbank persistiert werden können.
  */
-class HomeController
+class LoginController
 {
     /**
      * Die index Funktion des DefaultControllers sollte in jedem Projekt
@@ -59,7 +59,7 @@ class HomeController
                 $pwd = sha1($_POST['password']);
                 if($user->password == $pwd ){
                     $_SESSION['userId'] = $user->id;
-                    header('Location: /Gallery');
+                    header('Location: /');
                 }else{
                     echo "<script>
                             document.addEventListener('DOMContentLoaded', function() {
@@ -79,12 +79,12 @@ class HomeController
         // In diesem Fall möchten wir dem Benutzer die View mit dem Namen
         //   "default_index" rendern. Wie das genau funktioniert, ist in der
         //   View Klasse beschrieben.
-        $view = new View('home');
+        $view = new View('login');
         $view->title = 'Startseite';
         $view->heading = 'Startseite';
         $view->header = false;
-        $view->css('/css/home.css');
-        $view->js('/js/home.js');
+        $view->css('/css/login.css');
+        $view->js('/js/login.js');
         $view->display();
     }
 

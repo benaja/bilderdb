@@ -30,10 +30,11 @@ class GalleryRepository extends Repository
     }
 
     public function create($name, $descripiton){
-        $query = "INSERT INTO $this->tableName (name, description) VALUES (?, ?)";
+        $currentDate = date("Y-m-d");
+        $query = "INSERT INTO $this->tableName (name, description, createdate) VALUES (?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ss', $name, $descripiton);
+        $statement->bind_param('sss', $name, $descripiton, $currentDate);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);

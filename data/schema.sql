@@ -16,11 +16,11 @@ CREATE TABLE user
 );
 
   INSERT INTO user
-    (firstName, lastName, email, password)
+    (firstname, lastname, email, password)
   VALUES
     ('Ramon', 'Binz', 'ramon.binz@bbcag.ch', sha1('ramon'));
   INSERT INTO user
-    (firstName, lastName, email, password)
+    (firstname, lastname, email, password)
   VALUES
     ('Samuel', 'Wicky', 'samuel.wicky@bbcag.ch', sha1('samuel'));
 
@@ -67,5 +67,60 @@ ALTER TABLE `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+CREATE TABLE `picture`
+(
+  `id` int
+(11) NOT NULL,
+  `name` text,
+  `desciption` text,
+  `url` text,
+  `gallery_id` int
+(11) DEFAULT NULL,
+  `user_id` int
+(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `picture`
+--
+ALTER TABLE `picture`
+ADD PRIMARY KEY
+(`id`),
+ADD KEY `gallery_id`
+(`gallery_id`),
+ADD KEY `user_id`
+(`user_id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `picture`
+--
+ALTER TABLE `picture`
+  MODIFY `id` int
+(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `picture`
+--
+ALTER TABLE `picture`
+ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY
+(`gallery_id`) REFERENCES `gallery`
+(`id`),
+ADD CONSTRAINT `picture_ibfk_2` FOREIGN KEY
+(`user_id`) REFERENCES `user`
+(`id`);
 COMMIT;
 

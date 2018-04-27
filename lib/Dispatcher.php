@@ -40,7 +40,7 @@ class Dispatcher
         $uriFragments = explode('/', $uri); // In einzelteile zerlegen
 
         // Den Namen des gewünschten Controllers ermitteln
-        $controllerName = 'HomeController';
+        $controllerName = 'GalleryController';
         if (!empty($uriFragments[0])) {
             $controllerName = $uriFragments[0];
             $controllerName = ucfirst($controllerName); // Erstes Zeichen grossschreiben
@@ -67,11 +67,11 @@ class Dispatcher
         $controller = new $controllerName();
         $controller->$method();
         } else {
-           require_once "../controller/HomeController.php";
+           require_once "../controller/LoginController.php";
 
            // Eine neue Instanz des Controllers wird erstellt und die gewünschte
            //   Methode darauf aufgerufen.
-           $controller = new HomeController();
+           $controller = new LoginController();
            $controller->index(); // not logged in
         }
     }
