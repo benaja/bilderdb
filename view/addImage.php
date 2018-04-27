@@ -15,7 +15,7 @@
             <p class='imgAttr galTxt'>Gallery</p>
             <select name='galleryId'>
                 <?php foreach ($gallerys as $gallery): ?>
-                    <option value=". $gallery['id']. " class='imgAttr'><?= $gallery['name']  ?></option>
+                    <option value="<?= $gallery['id'] ?>" class='imgAttr'><?= $gallery['name']  ?></option>
                 <?php endforeach; ?>
             </select>
 
