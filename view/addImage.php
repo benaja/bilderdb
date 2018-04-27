@@ -11,11 +11,6 @@
                         <input class="file-path validate" type="text">
                     </div>
                 </div>
-                <!-- <label class="custom-file-upload">
-                    <p>Choose Picture...</p>
-
-                    <input type="file" accept="image/*" onchange="previewImage(this)" name="imgUpload" id="file" class="inputfile" />
-                </label> -->
             </div>
             <div class="image-properties row">
                 <div class="selected-image-container">

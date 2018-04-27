@@ -19,9 +19,17 @@
     margin: 30px auto;
 }
 
+
+.image-foreground{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-top: 1px;
+}
+
 .gallery_image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     background-image: url("/images/eifelturm.jpg");
     background-size: cover;
     background-position: center center;
@@ -36,9 +44,9 @@
 
 .gallery h3 {
     text-align: center;
-    color: black;
-    font-size: 30px;
-    margin-top: 10px;
+    color: white;
+    margin-top: 90px;
+    /* text-shadow: 0 0 5px black;   */
 }
 
 .last-row{

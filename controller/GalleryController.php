@@ -43,15 +43,18 @@ class GalleryController
     }
 
 
-    public function galleryShow(){
+    public function show(){
+        $galleryRepository = new GalleryRepository();
 
+        $images = $galleryRepository->pictures($_GET['id']);
+        $gallery = $galleryRepository->readById($_GET['id']);
 
         $view = new View('galleryShow');
         $view->css("/css/galleryShow.css");
+        $view->js("/js/galleryShow.js");
+        $view->gallery = $gallery;
+        $view->images = $images;
         $view->display();
-        $galleryId = $_GET['id'];
-        $galleryImages = getAllPicturesByGallerId($galleryId);
-        $view->galleryImages = $galleryImages;
     }
 
 }

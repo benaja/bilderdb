@@ -8,14 +8,22 @@
 
 <div class="gallery_container row">
     <?php foreach($gallerys as $gallery): ?>
-    <a href="/gallery/galleryShow?id=<?= $gallery['id'] ?>" class="col s4 gallery_link">
-        <div class='gallery'>
-            <div class='gallery_image'></div>
-            <h3>
-                <?= $gallery['name'] ?>
-            </h3>
+    <div class="col s4">
+        <div class="row">
+            <a href="/gallery/show?id=<?= $gallery['id'] ?>" class="col s10 offset-s1 gallery_link">
+                <div class='gallery'>
+                    <div class='gallery_image' style="background-image: url(/<?= $gallery['url'] ?>)">
+                        <div class="image-foreground">
+                            <h3 class="gallery-name">
+                                <?= $gallery['name'] ?>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
-    </a>
+    </div>
+
     <?php endforeach; ?>
 
 </div>
