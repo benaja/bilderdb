@@ -55,12 +55,13 @@ class ImageController
             $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filenameClear);
             $ext = pathinfo($filenameClear, PATHINFO_EXTENSION);
             $uniquesavename = time().uniqid(rand());
-            $target_file = $target_dir . $withoutExt . $uniquesavename . "." .$ext;
+            $target_file = $target_dir . $uniquesavename . "." .$ext;
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
-                    $date = date('m/d/Y', time());
-                    $dateFixed = date('Y-m-d', strtotime($date));
+                    $date = date('Y-m-d h:i:s');
+                    // $dateFixed = date('Y-m-d', strtotime($date));
+                    $dateFixed = $date;
                     $name = $_POST['imgName'];
                     $desc = $_POST['description'];
                     $galleryId = $_POST['galleryId'];

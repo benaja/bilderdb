@@ -10,6 +10,10 @@
 
 // }
 
+$(document).ready(function () {
+    $('select').formSelect();
+});
+
 function previewImage(input) {
 
     if (input.files && input.files[0]) {
@@ -17,9 +21,7 @@ function previewImage(input) {
 
         reader.onload = function (e) {
             $('.selected-image').attr('src', e.target.result);
-            $('.imgAttr').css('display', 'block');
-            $('select').css('display', 'block');
-            $('.selected-image-container').css('display', 'block');
+            $('.image-properties').show();
         }
 
         reader.readAsDataURL(input.files[0]);

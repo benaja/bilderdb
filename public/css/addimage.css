@@ -21,25 +21,11 @@ select {
     height: 100%;
 }
 
-.custom-upload {
-    width: 25%;
-    position: relative;
-    text-align: center;
-}
-
-.imgAttr {
-    display: none;
-}
-
 .custom-upload p {
     color: black;
     cursor: pointer;
 }
 
-.galTxt {
-    color: grey;
-    opacity: 0.6;
-}
 
 .add-image-container {
     margin-top: 100px;
@@ -50,18 +36,12 @@ select {
     position: relative;
 }
 
-h5 {
-    margin-left: 50px;
-    margin-top: 50px;
-}
-
-.selected-image-container {
-    margin-top: 50px;
-    height: auto;
-    display: none;
-}
 
 .selected-image {
     width: 100%;
     border: 3px solid black;
+}
+
+.image-properties{
+    display: none;
 }
