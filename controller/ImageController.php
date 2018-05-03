@@ -59,6 +59,23 @@ class ImageController
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
+                    $fullSizeImage = imagecreatefromjpeg($target_file);
+                    $height = imagesx($fullSizeImage); 
+                    $widht = imagesy($fullSizeImage);
+
+                    $factor = $height / $widht;
+
+                    $destImageWidth = 200 * $factor;
+                    $destImageHeight = 200;
+
+                    $thumbnail = imagecreatetruecolor($destImageWidth, $destImageHeight);
+                    imagecopyresampled($thumbnail, $fullSizeImage, 0, 0, 0, 0,
+                    $destImageWidth / 2, $destImageHeight * 2, $widht, $height);
+                    imagejpeg($thumbnail, $target_dir . "small-" . $uniquesavename. "." .$ext);
+                    imagedestroy($thumbnail);
+                    imagedestroy($fullSizeImage);
+
+
                     $date = date('Y-m-d h:i:s');
                     // $dateFixed = date('Y-m-d', strtotime($date));
                     $dateFixed = $date;
