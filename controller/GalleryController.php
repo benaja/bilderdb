@@ -51,7 +51,9 @@ class GalleryController
 
         $view = new View('galleryShow');
         $view->css("/css/galleryShow.css");
+        $view->js("/css/lightbox.css");
         $view->js("/js/galleryShow.js");
+        $view->js("/js/lightbox.js");
         $view->gallery = $gallery;
         $view->images = $images;
         $view->display();

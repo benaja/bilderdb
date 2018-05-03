@@ -31,7 +31,7 @@ class ImageRepository extends Repository
 
     public function upload($date, $name, $desc, $galleryId, $url, $uid){
       
-        $query = "INSERT INTO $this->tableName (name, desciption, url, gallery_id, user_id, created) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (name, description, url, gallery_id, user_id, created) VALUES (?, ?, ?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('sssiis', $name, $desc, $url, $galleryId, $uid, $date);

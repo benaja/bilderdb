@@ -6,7 +6,7 @@
         <div class="row col s4">
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <div class="image" style="background-image: url(/<?= $image->url ?>)"></div>
+                    <div data-lightbox="roadtrip" data-title="<?= $image->description  ?>" class="image" style="background-image: url(/<?= $image->url ?>)"></div>
                 </div>
             </div>
         </div>
