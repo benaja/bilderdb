@@ -8,3 +8,7 @@
 .container {
     width: 1200px;
 }
+
+.img-desc {
+    display: none;
+}
