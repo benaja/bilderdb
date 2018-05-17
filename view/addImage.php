@@ -4,7 +4,7 @@
             <div class="custom-upload">
                 <div class="file-field input-field">
                     <div class="btn">
-                        <span>Choose Picture...</span>
+                        <span>Choose Picture ...</span>
                         <input type="file" name="imgUpload" onchange="previewImage(this)">
                     </div>
                     <div class="file-path-wrapper">

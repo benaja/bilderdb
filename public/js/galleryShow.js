@@ -6,7 +6,9 @@ $(document).ready(function () {
 });
 
 function showDesc() {
-    $('.img-desc').show();
+    setTimeout(function () {
+        $('.img-desc').show()
+    }, 300);
 }
 
 function hideDesc() {
