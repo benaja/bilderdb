@@ -12,7 +12,7 @@
         <div class="row">
             <a href="/gallery/show?id=<?= $gallery['id'] ?>" class="col s10 offset-s1 gallery_link">
                 <div class='gallery'>
-                    <div class='gallery_image' style="background-image: url(/<?= $gallery['url'] ?>)">
+                    <div class='gallery_image' style="background-image: url(/Uploads/small-<?= $gallery['url'] ?>)">
                         <div class="image-foreground">
                             <h3 class="gallery-name">
                                 <?= $gallery['name'] ?>
