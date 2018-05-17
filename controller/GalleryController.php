@@ -2,6 +2,7 @@
 
 require_once '../repository/UserRepository.php';
 require_once('../repository/GalleryRepository.php');
+require_once('../repository/ImageRepository.php');
 
 /**
  * Siehe Dokumentation im DefaultController.
@@ -56,6 +57,32 @@ class GalleryController
         $view->js("/js/lightbox.js");
         $view->gallery = $gallery;
         $view->images = $images;
+        $view->display();
+    }
+
+    public function chooseImage(){
+        $galleryRepository = new GalleryRepository();
+
+        $images = $galleryRepository->pictures($_GET['id']);
+        $gallery = $galleryRepository->readById($_GET['id']);
+
+        $view = new View('galleryEditView');
+        $view->css("/css/galleryShow.css");
+        $view->js("/js/galleryShow.js");
+        $view->gallery = $gallery;
+        $view->images = $images;
+        $view->display();
+    }
+
+    public function editImage(){
+        $imageRepository = new ImageRepository();
+
+        $image = $imageRepository->readById($_GET['id']);
+
+        $view = new View('editImage');
+        $view->css("/css/editImage.css");
+        $view->js("/js/editImage.js");
+        $view->image = $image;
         $view->display();
     }
 
