@@ -96,5 +96,20 @@ class GalleryRepository extends Repository
 
         return $rows;
     }
+
+    public function edit($name, $descripiton, $id){
+        $query = "UPDATE table_name
+        SET name = ?, description = ?
+        WHERE id = ?;";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssi', $name, $descripiton, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->insert_id;
+    }
 }
 ?>

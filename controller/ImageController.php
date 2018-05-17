@@ -59,22 +59,26 @@ class ImageController
             $repository = new ImageRepository();
             // Check if image can be moved to dir
                 if (move_uploaded_file($filename,  $target_file)) {
-                    $fullSizeImage = imagecreatefromjpeg($target_file);
-                    $height = imagesx($fullSizeImage); 
-                    $widht = imagesy($fullSizeImage);
+                    list($width, $height) = getimagesize($target_file);
+                    $r = $width / $height;
 
-                    $factor = $height / $widht;
+                    $factor = $width / $height;
+                    $newheight = 200;
+                    $newwidth = 200 * $factor;
 
-                    $destImageWidth = 200 * $factor;
-                    $destImageHeight = 200;
-
-                    $thumbnail = imagecreatetruecolor($destImageWidth, $destImageHeight);
-                    imagecopyresampled($thumbnail, $fullSizeImage, 0, 0, 0, 0,
-                    $destImageWidth / 2, $destImageHeight * 2, $widht, $height);
-                    imagejpeg($thumbnail, $target_dir . "small-" . $uniquesavename. "." .$ext);
-                    imagedestroy($thumbnail);
-                    imagedestroy($fullSizeImage);
-
+                    if($ext == "png"){
+                        $src = imagecreatefrompng($target_file);
+                        $dst = imagecreatetruecolor($newwidth, $newheight);
+                        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    
+                        imagepng($dst, "Uploads/small-" . $uniquesavename. "." .$ext);
+                    }else{
+                        $src = imagecreatefromjpeg($target_file);
+                        $dst = imagecreatetruecolor($newwidth, $newheight);
+                        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    
+                        imagejpeg($dst, "Uploads/small-" . $uniquesavename. "." .$ext);
+                    }
 
                     $date = date('Y-m-d h:i:s');
                     // $dateFixed = date('Y-m-d', strtotime($date));
@@ -83,7 +87,7 @@ class ImageController
                     $desc = $_POST['description'];
                     $galleryId = $_POST['galleryId'];
                     $uid = $_SESSION['userId'];
-                    $repository->upload($dateFixed, $name, $desc, $galleryId, $target_file, $uid);
+                    $repository->upload($dateFixed, $name, $desc, $galleryId, $uniquesavename . ".". $ext, $uid);
                 }
         }
     

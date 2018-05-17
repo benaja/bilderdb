@@ -60,6 +60,7 @@ class GalleryController
         $view->display();
     }
 
+<<<<<<< HEAD
     public function chooseImage(){
         $galleryRepository = new GalleryRepository();
 
@@ -84,6 +85,22 @@ class GalleryController
         $view->js("/js/editImage.js");
         $view->image = $image;
         $view->display();
+=======
+    public function edit(){
+        $galleryRepository = new GalleryRepository();
+
+        if(isset($_POST['name'])){
+            // $gal
+        }
+
+        $gallery = $galleryRepository->readById($_GET['id']);
+        
+        $view = new View('galleryEdit');
+        $view->css("/css/galleryEdit.css");
+        $view->gallery = $gallery;
+        $view->display();
+        
+>>>>>>> b4148e2603233fbcb7d1c9707be4d8e810f2073a
     }
 
 }
