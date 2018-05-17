@@ -59,4 +59,20 @@ class GalleryController
         $view->display();
     }
 
+    public function edit(){
+        $galleryRepository = new GalleryRepository();
+
+        if(isset($_POST['name'])){
+            // $gal
+        }
+
+        $gallery = $galleryRepository->readById($_GET['id']);
+        
+        $view = new View('galleryEdit');
+        $view->css("/css/galleryEdit.css");
+        $view->gallery = $gallery;
+        $view->display();
+        
+    }
+
 }
