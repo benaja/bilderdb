@@ -85,12 +85,13 @@ class GalleryController
         $view->image = $image;
         $view->display();
     }
-    
+
     public function edit(){
         $galleryRepository = new GalleryRepository();
 
         if(isset($_POST['name'])){
-            // $gal
+            $galleryRepository->update($_POST['name'], $_POST['description'], $_GET['id']);
+            header('Location: '. "/gallery");
         }
 
         $gallery = $galleryRepository->readById($_GET['id']);
@@ -99,6 +100,7 @@ class GalleryController
         $view->css("/css/galleryEdit.css");
         $view->gallery = $gallery;
         $view->display();
+
         
     }
 
