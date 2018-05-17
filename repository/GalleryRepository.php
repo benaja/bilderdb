@@ -97,8 +97,8 @@ class GalleryRepository extends Repository
         return $rows;
     }
 
-    public function edit($name, $descripiton, $id){
-        $query = "UPDATE table_name
+    public function update($name, $descripiton, $id){
+        $query = "UPDATE {$this->tableName}
         SET name = ?, description = ?
         WHERE id = ?;";
 
