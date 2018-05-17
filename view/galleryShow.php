@@ -1,7 +1,12 @@
 <div class="container">
     <h2 class="center-align"><?= $gallery->name ?></h2>
     <h5 class="center-align"><?= $gallery->description ?></h5>
-    <a href="/gallery/chooseImage?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn-large  btn-edit">Edit</a>
+    <div class="row">
+        <div class="edit-buttons">
+            <a href="/gallery/chooseImage?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Images</a>
+            <a href="/gallery/edit?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Gallery</a>
+        </div>
+    </div>
     <div class="row">
         <?php foreach($images as $image): ?>
         <div class="row col s4">
