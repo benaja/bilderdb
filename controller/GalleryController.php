@@ -104,4 +104,10 @@ class GalleryController
         
     }
 
+    public function delete(){
+        $galleryRepository = new GalleryRepository();
+
+        $galleryRepository->deleteById($_POST['galleryId']);
+    }
+
 }
