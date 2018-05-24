@@ -18,7 +18,9 @@ class GalleryController
         
         $repository = new GalleryRepository();
 
-        $gallerys = $repository->getAllGallery();
+        // $gallerys = $repository->getAllGallery();
+
+        $gallerys = $repository->getGallerysByUser($authUser->id);
 
         $view = new View('gallery');
         $view->css("/css/gallery.css");
@@ -33,7 +35,10 @@ class GalleryController
             if($galleryRepository->exist($_POST['name'], 'name')){
 
             }else{
-                $id = $galleryRepository->create($_POST['name'], $_POST['description']);
+                $userRepository = new UserRepository();
+    
+                $authUser = $userRepository->getAuthuser();
+                $id = $galleryRepository->create($_POST['name'], $_POST['description'], $authUser->id);
                 header("Location: /gallery/show?id=$id");
             }
         }

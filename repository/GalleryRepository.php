@@ -31,12 +31,34 @@ class GalleryRepository extends Repository
         return (json_decode(json_encode($rows), true));                
     }
 
-    public function create($name, $descripiton){
-        $currentDate = date("Y-m-d");
-        $query = "INSERT INTO $this->tableName (name, description, createdate) VALUES (?, ?, ?)";
+    public function getGallerysByUser($userId){
+        $query = "SELECT gallery.id, gallery.name, gallery.description, picture.url from gallery
+        left JOIN picture
+        ON gallery.id = picture.gallery_id where gallery.user_id = ? GROUP by gallery.id";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('sss', $name, $descripiton, $currentDate);
+        $statement->bind_param('i', $userId);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Datensätze aus dem Resultat holen und in das Array $rows speichern
+        $rows = array();
+        while ($row = $result->fetch_object()) {
+            $rows[] = $row;
+        }                                          
+        return (json_decode(json_encode($rows), true)); 
+    }
+
+    public function create($name, $descripiton, $userId){
+        $currentDate = date("Y-m-d");
+        $query = "INSERT INTO $this->tableName (name, description, createdate, user_id) VALUES (?, ?, ?, ?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('sssi', $name, $descripiton, $currentDate, $userId);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
