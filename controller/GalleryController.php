@@ -74,17 +74,6 @@ class GalleryController
         $view->display();
     }
 
-    public function editImage(){
-        $imageRepository = new ImageRepository();
-
-        $image = $imageRepository->readById($_GET['id']);
-
-        $view = new View('editImage');
-        $view->css("/css/editImage.css");
-        $view->js("/js/editImage.js");
-        $view->image = $image;
-        $view->display();
-    }
 
     public function edit(){
         $galleryRepository = new GalleryRepository();
@@ -103,5 +92,5 @@ class GalleryController
 
         
     }
-
+    
 }
