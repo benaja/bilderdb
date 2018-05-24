@@ -5,6 +5,7 @@
         <div class="edit-buttons">
             <a href="/gallery/chooseImage?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Images</a>
             <a href="/gallery/edit?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Gallery</a>
+            <a class="waves-effect waves-light btn red" onclick="deleteGallery(<?= $_GET['id'] ?>)">Delete Gallery</a>
         </div>
     </div>
     <div class="row">

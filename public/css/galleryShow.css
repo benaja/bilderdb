@@ -42,8 +42,17 @@
     height: 100%;
 }
 
+<<<<<<< HEAD
 .edit-buttons {
     width: 250px;
+=======
+.edit-buttons{
+    width: 400px;
+>>>>>>> ff368e86aabea346b184df8a0ac39baa59c0b5f5
     margin-left: auto;
     margin-right: auto;
+}
+
+.swal-button--cancel:focus{
+    background-color: #efefef !important;
 }
