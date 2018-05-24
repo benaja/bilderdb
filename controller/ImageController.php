@@ -127,4 +127,10 @@ class ImageController
         $view->image = $image;
         $view->display();
     }
+
+    public function delete(){
+        $imageRepository = new imageRepository();
+
+        $imageRepository->deleteById($_POST['id']);
+    }
 }

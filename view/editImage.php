@@ -8,6 +8,7 @@
             <input value="<?= $image->description ?>" id="desc" name="editDesc" type="text" class="validate">
             <label for="desc">Description</label>
         </div>
-        <button class="btn-large" type="submit">Save</button>
+        <button class="btn" type="submit">Save</button>
+        <a class="waves-effect waves-light btn red" onclick="deleteGallery(<?= $_GET['id'] ?>)">Delete Image</a>
     </form>
 </div>
