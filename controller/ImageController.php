@@ -105,4 +105,21 @@ class ImageController
         $view->display();
 
     }
+    public function editImage(){
+        $imageRepository = new imageRepository();
+
+        if(isset($_POST['editDesc']) ||isset($_POST['editName'])){
+
+                $imageRepository->update($_POST['editName'], $_POST['editDesc'], $_GET['id']);
+                header('Location: '. "/gallery");
+        }
+
+        $image = $imageRepository->readById($_GET['id']);
+
+        $view = new View('editImage');
+        $view->css("/css/editImage.css");
+        $view->js("/js/editImage.js");
+        $view->image = $image;
+        $view->display();
+    }
 }

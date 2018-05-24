@@ -17,6 +17,10 @@
     left: 15px;
 }
 
+.img-name {
+    padding-bottom: 20px
+}
+
 .btn-edit {
     position: absolute;
     top: 80px;
@@ -28,18 +32,22 @@
     position: relative;
 }
 
+.img-conatiner:hover {
+    border: 1px solid black;
+}
+
 .img-link {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.edit-buttons{
+.edit-buttons {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.swal-button--cancel:focus{
+.swal-button--cancel:focus {
     background-color: #efefef !important;
 }

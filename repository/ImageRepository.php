@@ -65,6 +65,21 @@ class ImageRepository extends Repository
         return $rows;   
 
     }
+    
+    public function update($name, $descripiton, $id){
+        $query = "UPDATE {$this->tableName}
+        SET name = ?, description = ?
+        WHERE id = ?;";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssi', $name, $descripiton, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $statement->insert_id;
+    }
 }
 
 ?>
