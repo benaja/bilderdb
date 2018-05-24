@@ -90,10 +90,15 @@ class ImageController
                     $repository->upload($dateFixed, $name, $desc, $galleryId, $uniquesavename . ".". $ext, $uid);
                 }
         }
-    
+
+        $userRepository = new UserRepository();
+        $authUser = $userRepository->getAuthuser();
+
+        
         $repository = new GalleryRepository();
 
-        $gallerys = $repository->getAllGallery();
+        $gallerys = $repository->getGallerysByUser($authUser->id);
+    
 
         $view = new View('AddImage');
         $view->title = 'Add Image';
