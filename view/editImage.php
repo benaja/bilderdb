@@ -1,4 +1,8 @@
 <div class="edit-image-container">
+<?php if($image == null): ?>
+<h1>Dieses Bild existiert nicht</h1>
+<?php else: ?>
+<?php if($_SESSION['userId'] === $image->user_id): ?>
     <form method="POST" action="#">
         <div class="input-field col s6">
             <input value="<?= $image->name?>" id="last_name" name="editName" type="text" class="validate">
@@ -11,4 +15,8 @@
         <button class="btn" type="submit">Save</button>
         <a class="waves-effect waves-light btn red" onclick="deleteGallery(<?= $_GET['id'] ?>)">Delete Image</a>
     </form>
+    <?php else: ?>
+<h1>Sie haben keinen Zugriff auf dieses Bild</h1>
+<?php endif?>
+<?php endif?>
 </div>

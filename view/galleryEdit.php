@@ -1,4 +1,8 @@
 <div class="container">
+<?php if($gallery == null): ?>
+<h1>Diese Gallerie existiert nicht</h1>
+<?php else: ?>
+<?php if($_SESSION['userId'] === $gallery->user_id): ?>
     <div class="row edit-formular">
         <div class="col s8 offset-s2">
             <form action="#" method="post">
@@ -25,4 +29,8 @@
         </div>
 
     </div>
+    <?php else: ?>
+<h1>Sie haben keinen Zugriff auf diese Gallerie</h1>
+<?php endif?>
+<?php endif?>
 </div>

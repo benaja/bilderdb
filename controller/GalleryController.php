@@ -21,7 +21,6 @@ class GalleryController
         // $gallerys = $repository->getAllGallery();
 
         $gallerys = $repository->getGallerysByUser($authUser->id);
-
         $view = new View('gallery');
         $view->css("/css/gallery.css");
         $view->gallerys = $gallerys;
