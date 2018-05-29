@@ -55,10 +55,10 @@ class GalleryRepository extends Repository
 
     public function create($name, $descripiton, $userId){
         $currentDate = date("Y-m-d");
-        $query = "INSERT INTO $this->tableName (name, description, createdate, user_id) VALUES (?, ?, ?, ?)";
-
+        $query = "INSERT INTO $this->tableName (name, description, createdate, user_id, share_link) VALUES (?, ?, ?, ?, ?)";
+        $shareLink = uniqid();
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('sssi', $name, $descripiton, $currentDate, $userId);
+        $statement->bind_param('sssis', $name, $descripiton, $currentDate, $userId, $shareLink);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);

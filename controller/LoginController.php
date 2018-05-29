@@ -34,7 +34,6 @@ class LoginController
     public function index()
     {
 
-        //var_dump($_POST);
         if(isset($_POST['firstname']))
         {
             $repository = new UserRepository();
