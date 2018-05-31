@@ -55,7 +55,7 @@ class LoginController
             if($repository->exist($_POST['email'])){
                 $user = $repository->login($_POST['email']);
             
-                $pwd = sha1($_POST['password']);
+                $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 if($user->password == $pwd ){
                     $_SESSION['userId'] = $user->id;
                     header('Location: /');
