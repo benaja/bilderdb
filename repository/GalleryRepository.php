@@ -67,8 +67,73 @@ class GalleryRepository extends Repository
         return $statement->insert_id;
     }
 
+    public function createLink($galleryId){
+        $query = "UPDATE {$this->tableName} set share_link = ? where id = ?" ;
+        $shareLink = uniqid();
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('si', $shareLink, $galleryId);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+        return $shareLink;
+    }
+
+    public function readByShareId($sharedLink)
+    {
+        // Query erstellen
+        $query = "SELECT * FROM {$this->tableName} WHERE share_link=?";
+
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $sharedLink);
+
+        // Das Statement absetzen
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Ersten Datensatz aus dem Reultat holen
+        $row = $result->fetch_object();
+
+        // Datenbankressourcen wieder freigeben
+        $result->close();
+
+        // Den gefundenen Datensatz zurückgeben
+        return $row;
+    }
+
+    public function getSharedLinkPictures($sharedLink){
+         $query = "SELECT gallery.id, gallery.name, gallery.description, picture.url from gallery
+         left JOIN picture
+         ON gallery.id = picture.gallery_id where gallery.share_link = ? GROUP by gallery.id";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $sharedLink);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        // Datensätze aus dem Resultat holen und in das Array $rows speichern
+        $rows = array();
+        while ($row = $result->fetch_object()) {
+            $rows[] = $row;
+        }                                          
+        return (json_decode(json_encode($rows), true)); 
+    }
+
+
     public function exist($id, $attribut){
-        $query = "SELECT count(*) as anzahl FROM {$this->tableName} WHERE $attribut =?";
+        $query = "SELECT count(*) as anzahl FROM {$this->tableName} WHERE $attribut = ?;";
 
         // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
         // und die Parameter "binden"

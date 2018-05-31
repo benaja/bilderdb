@@ -48,12 +48,44 @@ class GalleryController
     }
 
 
-    public function show(){
+    public function shareLink(){
         $galleryRepository = new GalleryRepository();
 
-        $images = $galleryRepository->pictures($_GET['id']);
-        $gallery = $galleryRepository->readById($_GET['id']);
+        $sharedLink = $galleryRepository->createLink($_POST['galleryId']);
+        echo $sharedLink;
+    }
 
+    public function show(){
+        $galleryRepository = new GalleryRepository();
+        if(isset($_GET['sharedLink'])){
+        $images = $galleryRepository->getSharedLinkPictures($_GET['sharedLink']);
+        $gallery = $galleryRepository->readByShareId($_GET['sharedLink']);
+        }
+        else{
+            $images = $galleryRepository->pictures($_GET['id']);
+            $gallery = $galleryRepository->readById($_GET['id']);
+        }
+
+        if($gallery === null){
+            $view = new View('noGallery');
+        }
+        else if($_SESSION['userId'] != $gallery->user_id){
+            $view = new View('noPermisson');
+        }
+        elseif(isset($_GET['sharedLink'])){
+            if($_GET['sharedLink'] == $gallery->share_link){
+
+                $view = new View('galleryShow');
+                $view->css("/css/galleryShow.css");
+                $view->css("/css/lightbox.css");
+                $view->js("/js/galleryShow.js");
+                $view->js("/js/lightbox.js");
+                $view->gallery = $gallery;
+                $view->images = $images;
+                $view->display();
+            }
+        }
+        else{
         $view = new View('galleryShow');
         $view->css("/css/galleryShow.css");
         $view->css("/css/lightbox.css");
@@ -62,6 +94,7 @@ class GalleryController
         $view->gallery = $gallery;
         $view->images = $images;
         $view->display();
+        }
     }
 
     public function chooseImage(){

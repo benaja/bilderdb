@@ -1,8 +1,4 @@
 <div class="container">
-<?php if($gallery == null): ?>
-<h1>Diese Gallerie existiert nicht</h1>
-<?php else: ?>
-<?php if($_SESSION['userId'] === $gallery->user_id or $gallery->share_link == $_GET['id']): ?>
     <h2 class="center-align"><?= $gallery->name ?></h2>
     <h5 class="center-align"><?= $gallery->description ?></h5>
     <div class="row">
@@ -10,7 +6,7 @@
             <a href="/gallery/chooseImage?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Images</a>
             <a href="/gallery/edit?id=<?= $_GET['id'] ?>" class="waves-effect waves-light btn">Edit Gallery</a>
             <a class="waves-effect waves-light btn red" onclick="deleteGallery(<?= $_GET['id'] ?>)">Delete Gallery</a>
-            <a class="waves-effect waves-light btn red" onclick="shareGallery('<?= $gallery->share_link ?>')">Share Gallery</a>
+            <a class="waves-effect waves-light btn red" onclick="shareGallery('<?= $gallery->id ?>')">Share Gallery</a>
         </div>
     </div>
     <div class="row">
@@ -23,10 +19,7 @@
             </div>
         </div>
         <?php endforeach; ?>
-<?php else: ?>
-<h1>Sie haben keinen Zugriff auf diese Gallerie</h1>
-<?php endif?>
-<?php endif?>
+        <h1>Sie haben keinen Zugriff auf diese Gallerie</h1>
     </div>
 </div>
 

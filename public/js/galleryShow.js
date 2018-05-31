@@ -41,17 +41,29 @@ function deleteGallery(galleryId) {
                     console.log(errorThrown);
                 }
             });
-            if (willDelete) {
-
-            }
         });
 }
 
-function shareGallery(link) {
-    var yourLink = "http://127.0.0.1/gallery/show?id=" + link;
-    swal({
-        title: "Created Succesfully",
-        text: "your link: " + yourLink,
-        icon: "success",
+function shareGallery(galleryId) {
+    console.log(galleryId);
+    $.ajax({
+        url: '/gallery/sharelink',
+        type: 'post',
+        data: {
+            galleryId: galleryId
+        },
+        success: function (data) {
+            var yourLink = "http://127.0.0.1/gallery/show?sharedLink=" + data;
+            swal("The link has been created!", {
+                title: "Created Succesfully",
+                text: "your link: " + yourLink,
+                icon: "success",
+            }).then((djsfk) => {
+                window.location = "/gallery";
+            });
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
     });
 }
