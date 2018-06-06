@@ -24,23 +24,25 @@ function deleteGallery(galleryId) {
             dangerMode: true,
         })
         .then((willDelete) => {
-            $.ajax({
-                url: '/gallery/delete',
-                type: 'post',
-                data: {
-                    galleryId: galleryId
-                },
-                success: function (data, ) {
-                    swal("The Gallery has been deleted!", {
-                        icon: "success",
-                    }).then((djsfk) => {
-                        window.location = "/gallery";
-                    });
-                },
-                error: function (jqXhr, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-            });
+            if(willDelete){
+                $.ajax({
+                    url: '/gallery/delete',
+                    type: 'post',
+                    data: {
+                        galleryId: galleryId
+                    },
+                    success: function (data, ) {
+                        swal("The Gallery has been deleted!", {
+                            icon: "success",
+                        }).then((djsfk) => {
+                            window.location = "/gallery";
+                        });
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            }
         });
 }
 

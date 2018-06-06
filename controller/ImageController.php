@@ -85,7 +85,7 @@ class ImageController
                     $dateFixed = $date;
                     $name = $_POST['imgName'];
                     $desc = $_POST['description'];
-                    $galleryId = $_POST['galleryId'];
+                    $galleryId = $_GET['gallery'];
                     $uid = $_SESSION['userId'];
                     $repository->upload($dateFixed, $name, $desc, $galleryId, $uniquesavename . ".". $ext, $uid);
                 }
@@ -110,13 +110,14 @@ class ImageController
         $view->display();
 
     }
-    public function editImage(){
+    public function edit(){
         $imageRepository = new imageRepository();
 
         if(isset($_POST['editDesc']) ||isset($_POST['editName'])){
 
                 $imageRepository->update($_POST['editName'], $_POST['editDesc'], $_GET['id']);
-                header('Location: '. "/gallery");
+                $image = $imageRepository->readById($_GET['id']);
+                header("location: /gallery/show?id=".$image->gallery_id);
         }
 
         $image = $imageRepository->readById($_GET['id']);
@@ -131,6 +132,13 @@ class ImageController
     public function delete(){
         $imageRepository = new imageRepository();
 
+        $picure = $imageRepository->readById($_POST['id']);
+
+        unlink("Uploads/".$picure->url);
+        unlink("Uploads/small-".$picure->url);
+
         $imageRepository->deleteById($_POST['id']);
+
+        echo $picure->gallery_id;
     }
 }

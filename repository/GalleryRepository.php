@@ -112,7 +112,7 @@ class GalleryRepository extends Repository
     public function getSharedLinkPictures($sharedLink){
          $query = "SELECT gallery.id, gallery.name, gallery.description, picture.url from gallery
          left JOIN picture
-         ON gallery.id = picture.gallery_id where gallery.share_link = ? GROUP by gallery.id";
+         ON gallery.id = picture.gallery_id where gallery.share_link = ?";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('s', $sharedLink);
@@ -128,7 +128,7 @@ class GalleryRepository extends Repository
         while ($row = $result->fetch_object()) {
             $rows[] = $row;
         }                                          
-        return (json_decode(json_encode($rows), true)); 
+        return $rows; 
     }
 
 

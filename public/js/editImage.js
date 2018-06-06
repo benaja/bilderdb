@@ -7,25 +7,24 @@ function deleteGallery(imageId) {
             dangerMode: true,
         })
         .then((willDelete) => {
-            $.ajax({
-                url: '/image/delete',
-                type: 'post',
-                data: {
-                    id: imageId
-                },
-                success: function (data, ) {
-                    swal("The image has been deleted!", {
-                        icon: "success",
-                    }).then((djsfk) => {
-                        window.location = "/gallery";
-                    });
-                },
-                error: function (jqXhr, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-            });
-            if (willDelete) {
-
+            if(willDelete){
+                $.ajax({
+                    url: '/image/delete',
+                    type: 'post',
+                    data: {
+                        id: imageId
+                    },
+                    success: function (data, ) {
+                        swal("The image has been deleted!", {
+                            icon: "success",
+                        }).then((abc) => {
+                            window.location = "/gallery/show?id="+data;
+                        });
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
             }
         });
 }

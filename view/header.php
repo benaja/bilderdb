@@ -49,6 +49,9 @@
                         <a><?= "$authUser->firstname $authUser->lastname" ?></a>
                     </li>
                     <li>
+                        <a href="/profile/edit">Edit Profile</a>
+                    </li>
+                    <li>
                         <a href="/login/logout">Logout</a>
                     </li>
                 </ul>
@@ -60,9 +63,6 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
                             <a href="/gallery">Gallery</a>
-                        </li>
-                        <li>
-                            <a href="/image/upload">Upload Images</a>
                         </li>
                         <li>
                             <a href="/search">Search</a>

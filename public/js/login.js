@@ -28,3 +28,46 @@ function testPW(){
     }
     return true;
 }
+
+function validateProfileEdit(){
+    if($("#firstname").val() == ""){
+        swal('Error', 'Firstname can not be empty!', 'error');
+        return false;
+    }
+    if($("#lastname").val() == ""){
+        swal('Error', 'Firstname can not be empty!', 'error');
+        return false;
+    }
+    if($("#password1").val() != ""){
+        return testPW();
+    }
+    return true;
+}
+
+function deleteProfile(){
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover your Account!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if(willDelete){
+            $.ajax({
+                url: '/profile/delete',
+                type: 'get',
+                success: function (data, ) {
+                    swal("Your Profile has been deleted!", {
+                        icon: "success",
+                    }).then((abc) => {
+                        window.location = "/";
+                    });
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        }
+    });
+}

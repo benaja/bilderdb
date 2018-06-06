@@ -127,4 +127,39 @@ class UserRepository extends Repository
         // Den gefundenen Datensatz zurückgeben
         return $row;
     }
+
+    public function updateUser($firstName, $lastName, $id){
+        $query = "UPDATE {$this->tableName} SET firstname = ?, lastname = ? WHERE id = ?;";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssi', $firstName, $lastName, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
+
+    public function updateUserWidthPW($firstName, $lastName, $password, $id){
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "UPDATE {$this->tableName} SET firstname = ?, lastname = ?, password = ? WHERE id = ?;";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('sssi', $firstName, $lastName, $password, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
+
+    public function delete($userid){
+        $query = "delete from user where id = ?";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i', $userid);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
 }
