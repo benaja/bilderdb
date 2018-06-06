@@ -120,7 +120,7 @@ class GalleryController
 
         if(isset($_POST['name'])){
             $galleryRepository->update($_POST['name'], $_POST['description'], $_GET['id']);
-            header('Location: '. "/gallery");
+            header('Location: '. "/gallery/show?id=".$_GET['id']);
         }
 
         $gallery = $galleryRepository->readById($_GET['id']);
@@ -128,7 +128,7 @@ class GalleryController
         $view = new View('galleryEdit');
         $view->css("/css/galleryEdit.css");
         $view->gallery = $gallery;
-        
+        $view->display();
     }
 
     public function delete(){

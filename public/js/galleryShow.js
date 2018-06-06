@@ -61,7 +61,6 @@ function shareGallery(galleryId) {
                 text: "your link: " + yourLink,
                 icon: "success",
             }).then((djsfk) => {
-                window.location = "/gallery";
             });
         },
         error: function (jqXhr, textStatus, errorThrown) {
