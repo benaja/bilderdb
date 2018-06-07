@@ -55,10 +55,13 @@ function shareGallery(galleryId) {
             galleryId: galleryId
         },
         success: function (data) {
-            var yourLink = "http://127.0.0.1/gallery/show?sharedLink=" + data;
+            var location = window.location.toString();
+            var link = location.split("?", 1);
+
+            var yourLink = link+"?sharedLink=" + data;
             swal("The link has been created!", {
                 title: "Created Succesfully",
-                text: "your link: " + yourLink,
+                text: "your link: \n " + yourLink,
                 icon: "success",
             }).then((djsfk) => {
             });
